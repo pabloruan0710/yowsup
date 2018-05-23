@@ -302,8 +302,8 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
     @clicmd("Remove all participants Group")
     def group_clean(self, group_jid, jids = None):
         if self.assertConnected():
-            grupos = RemoveAllParticipantsGroupIqProtocolEntity(self.aliasToJid(group_jid))
-            self.toLower(grupos)
+            groups = RemoveAllParticipantsGroupIqProtocolEntity(self.aliasToJid(group_jid))
+            self.toLower(groups)
 
     @EventCallback(EVENT_REMOVE_PARTICIPANTS)
     def group_removing_participants(self, layerEvent):

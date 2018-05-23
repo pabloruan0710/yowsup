@@ -131,7 +131,7 @@ class YowGroupsProtocolLayer(YowProtocolLayer):
         self.toUpper(ErrorIqProtocolEntity.fromProtocolTreeNode(node))
 
     def onRemoveAllParticipantsGroup(self, node, originalIqEntity):
-        logger.info("Start deleted Participants ....")
+        logger.info("Group remove participants success")
         g = RemoveAllParticipantsResultIqProtocolEntity.fromProtocolTreeNode(node)
         participants = []
         for participant in g.getParticipants():
@@ -141,9 +141,7 @@ class YowGroupsProtocolLayer(YowProtocolLayer):
                     isAdm = True
             if isAdm == False:
                 participants.append(Jid.normalize(participant))
-                
-        print("List for Remove Group: %s"%g.getGroupId())
-        print(participants)
+        
         if len(participants) > 0:
             entity = RemoveParticipantsIqProtocolEntity(group_jid=Jid.normalize(g.getGroupId()), participantList=participants)
             entity.toProtocolTreeNode()
